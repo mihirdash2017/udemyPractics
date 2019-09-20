@@ -1,6 +1,7 @@
 package com.example.UserRestService.controller;
 
 import java.net.URI;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.UserRestService.Exception.UserNotFoundException;
 import com.example.UserRestService.dao.UserDao;
 import com.example.UserRestService.model.User;
 
@@ -29,8 +31,10 @@ public class UserRestController {
 	}
 	@GetMapping(value="/user/{id}")
 	public User retriveUser(@PathVariable int id){
-		
-		return daoService.findUser(id);
+		User user=daoService.findUser(id);
+		if(user==null)
+			throw new UserNotFoundException("Id not found :"+id);
+		return user;
 	}
 	
 	@PostMapping(value="/createUser")
