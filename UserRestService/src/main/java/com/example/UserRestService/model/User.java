@@ -14,6 +14,10 @@ public class User implements Serializable{
 	private int age;
 	private double salary;
 	
+	protected User(){
+		
+	}
+	
 	public User(int id, String userName, int age, double salary) {
 		super();
 		this.id = id;
