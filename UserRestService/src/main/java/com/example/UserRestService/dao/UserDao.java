@@ -1,6 +1,7 @@
 package com.example.UserRestService.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -35,6 +36,17 @@ public class UserDao {
 	public User findUser(int id){
 		for (User user : userList) {
 			if(user.getId()==id){
+				return user;
+			}
+		}
+		return null;
+	}
+	public User deleteById(int id){
+		Iterator<User> itr=userList.iterator();
+		while(itr.hasNext()){
+			User user=itr.next();
+			if(user.getId()==id){
+				itr.remove();
 				return user;
 			}
 		}
