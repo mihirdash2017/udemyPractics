@@ -2,6 +2,8 @@ package com.example.UserRestService.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Size;
+
 public class User implements Serializable{
 
 	/**
@@ -10,6 +12,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 6749339597051525300L;
 	
 	private int id;
+	@Size(min=5,message="Name should have min 5 charcter")
 	private String userName;
 	private int age;
 	private double salary;
