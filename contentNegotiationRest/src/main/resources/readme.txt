@@ -1,0 +1,1 @@
+for conent negotiation we add here in pom one dependency i.e jackson-dataformat-xml
