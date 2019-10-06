@@ -1,14 +1,16 @@
 package com.example.actuator.RestActuator.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //static filteration using this @JsonIgnoreProperties(value={"sid","name"})
+@JsonFilter("myStudent")//dynamic filtering of data
 public class Student {
 	private String sid;
 	private String name;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	//this is example of static filteration
 	private String grade;
 	public Student(String sid, String name, String grade) {
